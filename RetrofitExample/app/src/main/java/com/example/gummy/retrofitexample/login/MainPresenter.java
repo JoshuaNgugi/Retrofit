@@ -1,11 +1,7 @@
-package com.example.gummy.retrofitexample.presenter;
+package com.example.gummy.retrofitexample.login;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.gummy.retrofitexample.MainActivity;
-import com.example.gummy.retrofitexample.contract.MainContract;
 import com.example.gummy.retrofitexample.networking.NetworkingUtils;
 import com.example.gummy.retrofitexample.networking.UserService;
 
@@ -45,8 +41,12 @@ public class MainPresenter implements MainContract.Presenter {
                         Log.i(TAG, "onResponse: " + s);
                         JSONObject jsonObject = new JSONObject(s);
                         boolean error = jsonObject.getBoolean("error");
-                        if (!error)
+                        if (!error) {
                             mView.displayMsg("No error");
+                            String authToken = jsonObject.getString("access_token");
+                            //mView.displayMsg(authToken);
+                            mView.passToken(authToken);
+                        }
                         else
                             mView.displayMsg("Error");
                     } catch (IOException e) {

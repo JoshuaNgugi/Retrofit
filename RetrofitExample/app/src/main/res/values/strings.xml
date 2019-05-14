@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Retrofit Example</string>
-    <string name="msg_employee_number">Employee number</string>
-    <string name="msg_password">Password</string>
+    <string name="hint_employee_number">Employee number</string>
+    <string name="hint_password">Password</string>
     <string name="action_login">Login</string>
+    <string name="hint_leave_type">Leave type</string>
+    <string name="hint_from">From</string>
+    <string name="hint_to">To</string>
+    <string name="hint_number_of_relievers">Number of relievers</string>
+    <string name="action_apply">Apply</string>
 </resources>

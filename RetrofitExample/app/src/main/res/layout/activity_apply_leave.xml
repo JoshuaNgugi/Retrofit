@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".applyleave.ApplyLeaveActivity"
+    android:padding="@dimen/layout_padding"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edit_leave_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_leave_type"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/edit_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_from"
+        android:inputType="date"/>
+
+    <EditText
+        android:id="@+id/edit_to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_to"
+        android:inputType="date"/>
+
+    <EditText
+        android:id="@+id/edit_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_number_of_relievers"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/button_apply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_apply"
+        android:textAllCaps="false"/>
+
+</LinearLayout>
