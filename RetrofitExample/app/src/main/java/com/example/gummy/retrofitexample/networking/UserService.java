@@ -2,6 +2,8 @@ package com.example.gummy.retrofitexample.networking;
 
 import android.database.Observable;
 
+import com.example.gummy.retrofitexample.model.DefaultResponse;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -12,7 +14,7 @@ import retrofit2.http.POST;
 public interface UserService {
     @FormUrlEncoded
     @POST("auth/login")
-    Call<ResponseBody> loginUserService(
+    Call<DefaultResponse> loginUserService(
             @Field("employee_no") String employee_no,
             @Field("password") String password
     );

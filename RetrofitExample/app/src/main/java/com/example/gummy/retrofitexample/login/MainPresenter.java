@@ -1,7 +1,9 @@
 package com.example.gummy.retrofitexample.login;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.gummy.retrofitexample.model.DefaultResponse;
 import com.example.gummy.retrofitexample.networking.NetworkingUtils;
 import com.example.gummy.retrofitexample.networking.UserService;
 
@@ -32,7 +34,26 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loginUser(String number, String password) {
-        mUserService.loginUserService(number, password).enqueue(new Callback<ResponseBody>() {
+        mUserService.loginUserService(number, password).enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                if (response.isSuccessful()) {
+                    DefaultResponse defaultResponse = response.body();
+                    if (!defaultResponse.isError()) {
+                        mView.displayMsg("No error");
+                        String authToken = defaultResponse.getToken();
+                        mView.passToken(authToken);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                mView.displayMsg("Error occurred.");
+                Log.e(TAG, "onFailure: Error occurred.");
+            }
+        });
+        /*mUserService.loginUserService(number, password).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
@@ -62,8 +83,6 @@ public class MainPresenter implements MainContract.Presenter {
                 mView.displayMsg("Error occurred.");
                 Log.e(TAG, "onFailure: Error occurred.");
             }
-        });
+        });*/
     }
-
-
 }
